@@ -14,20 +14,21 @@ class PlaceFinder {
 
   selectPlace(coordinates, address) {
     if (this.map) {
-
       this.map.render(coordinates);
     } else {
-
       this.map = new Map(coordinates);
     }
 
     this.shareBtn.disabled = false;
+
+    const href = location.href;
+
+    const path = href.replace("index.html", "");
+
     const sharedLinkInputElement = document.getElementById("share-link");
-    sharedLinkInputElement.value = `${
-      location.origin
-    }/my-place?address=${encodeURI(address)}&lat=${coordinates.lat}&lng=${
-      coordinates.lng
-    }`;
+    sharedLinkInputElement.value = `${path}my-place?address=${encodeURI(
+      address
+    )}&lat=${coordinates.lat}&lng=${coordinates.lng}`;
   }
 
   sharePlaceHandler() {
