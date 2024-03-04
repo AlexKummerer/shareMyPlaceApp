@@ -35,7 +35,7 @@ class PlaceFinder {
       })
       .then((data) => {
         console.log(data);
-        const locationId = data.location.id;
+        const locationId = data.locId;
         this.shareBtn.disabled = false;
         const sharedLinkInputElement = document.getElementById("share-link");
         sharedLinkInputElement.value = `${location.origin}/my-place?location=${locationId}`;
