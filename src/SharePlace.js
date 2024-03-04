@@ -1,15 +1,24 @@
 import { Modal } from "./UI/Modal";
-
+import { Map } from "./UI/Map";
 
 class PlaceFinder {
   constructor() {
     const addressForm = document.querySelector("form");
     const locateUserBtn = document.getElementById("locate-btn");
     this.shareBtn = document.getElementById("share-btn");
-    locateUserBtn.addEventListener("click", this.locateUserHandler);
+    locateUserBtn.addEventListener("click", this.locateUserHandler.bind(this));
     this.shareBtn.addEventListener("click", this.sharePlaceHandler);
     addressForm.addEventListener("submit", this.findAddressHandler);
   }
+
+  selectPlace(coordinates) {
+    if (this.map) {
+      this.map.render(coordinates);
+    } else {
+      this.map = new Map(coordinates);
+    }
+    this.shareBtn.disabled = false;
+  } 
 
   sharePlaceHandler() {
     console.log("Sharing place...");
@@ -50,6 +59,7 @@ class PlaceFinder {
           lat: successResult.coords.latitude,
           lng: successResult.coords.longitude,
         };
+        this.selectPlace(coordinates);
         // const address = await PlaceFinder.getAddressFromCoords(coordinates);
 
         modal.hide();
