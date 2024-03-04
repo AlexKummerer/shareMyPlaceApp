@@ -14,7 +14,8 @@ module.exports = {
   },
   devtool: 'cheap-module-eval-source-map',
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    index: 'index.html',
   },
   module: {
     rules: [
@@ -35,5 +36,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [new CleanPlugin.CleanWebpackPlugin()]
+  // plugins: [new CleanPlugin.CleanWebpackPlugin()]
 };
