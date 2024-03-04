@@ -1,5 +1,6 @@
 import { Modal } from "./UI/Modal";
 import { Map } from "./UI/Map";
+import { getCoordsFromAddress, getAddressFromCoords } from "./Utility/Location";
 
 class PlaceFinder {
   constructor() {
@@ -8,17 +9,26 @@ class PlaceFinder {
     this.shareBtn = document.getElementById("share-btn");
     locateUserBtn.addEventListener("click", this.locateUserHandler.bind(this));
     this.shareBtn.addEventListener("click", this.sharePlaceHandler);
-    addressForm.addEventListener("submit", this.findAddressHandler);
+    addressForm.addEventListener("submit", this.findAddressHandler.bind(this));
   }
 
-  selectPlace(coordinates) {
+  selectPlace(coordinates, address) {
     if (this.map) {
+
       this.map.render(coordinates);
     } else {
+
       this.map = new Map(coordinates);
     }
+
     this.shareBtn.disabled = false;
-  } 
+    const sharedLinkInputElement = document.getElementById("share-link");
+    sharedLinkInputElement.value = `${
+      location.origin
+    }/my-place?address=${encodeURI(address)}&lat=${coordinates.lat}&lng=${
+      coordinates.lng
+    }`;
+  }
 
   sharePlaceHandler() {
     console.log("Sharing place...");
@@ -59,7 +69,8 @@ class PlaceFinder {
           lat: successResult.coords.latitude,
           lng: successResult.coords.longitude,
         };
-        this.selectPlace(coordinates);
+        const address = await getAddressFromCoords(coordinates);
+        this.selectPlace(coordinates, address);
         // const address = await PlaceFinder.getAddressFromCoords(coordinates);
 
         modal.hide();
@@ -77,6 +88,7 @@ class PlaceFinder {
 
   async findAddressHandler(event) {
     event.preventDefault();
+    console.log(event);
     const address = event.target.querySelector("input").value;
     if (!address || address.trim().length === 0) {
       alert("Invalid address entered - please try again!");
@@ -88,7 +100,10 @@ class PlaceFinder {
     );
     modal.show();
     try {
-      const coordinates = await PlaceFinder.getCoordsFromAddress(address);
+      const coordinates = await getCoordsFromAddress(address);
+      // const coordinates = await getCoordsFromAddress(address);
+      this.selectPlace(coordinates, address);
+
       this.shareBtn.disabled = false;
     } catch (err) {
       alert(err.message);
