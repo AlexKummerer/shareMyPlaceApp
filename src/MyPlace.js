@@ -24,7 +24,7 @@ const coords = {
 };
 const address = queryParams.get("address");
 const locId = queryParams.get("location");
-fetch("http://localhost:3000/location/" + locId)
+fetch(process.env.API_URL + "/location/" + locId)
   .then((response) => {
     if (response.status === 404) {
       throw new Error("Could not find location!");

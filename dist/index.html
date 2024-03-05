@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Share a Place</title>
-    <link rel="stylesheet" href="assets/styles/app.css" />
-    <link rel="stylesheet" href="assets/styles/share-place.css" />
+    <!-- <base href="/projects/shareMyPlaceApp"> -->
+    <link rel="stylesheet" href="./assets/styles/app.css" />
+    <link rel="stylesheet" href="./assets/styles/share-place.css" />
+
     <script>
+      // const apiKey = '<%= htmlWebpackPlugin.options.apiKey %>';
+      console.log(apiKey);
       ((g) => {
         var h,
           a,
@@ -42,9 +46,10 @@
         d[l]
           ? console.warn(p + " only loads once. Ignoring:", g)
           : (d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)));
-      })({ key: "", v: "weekly" });
+      })({ key: AIzaSyAFk7sb6UJstrg7BZk388uYCKt-EGZQHp0, v: "weekly" });
     </script>
 
+    <!-- <script src="assets/scripts/share-place.715f8971f117b2ac8056.js" defer></script> -->
     <script src="assets/scripts/SharePlace.js" defer></script>
   </head>
   <body>

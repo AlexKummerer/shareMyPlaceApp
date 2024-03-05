@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack --mode development",
-
     "build": "webpack",
     "start": "webpack-dev-server",
     "build:prod": "webpack --config webpack.config.prod.js"
@@ -20,9 +19,13 @@
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "core-js": "^3.2.1",
+    "html-webpack-plugin": "^4.5.2",
     "regenerator-runtime": "^0.13.3",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
   }
 }

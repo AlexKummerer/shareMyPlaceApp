@@ -19,7 +19,7 @@ class PlaceFinder {
       this.map = new Map(coordinates);
     }
 
-    fetch("http://localhost:3000/add-location", {
+    fetch(process.env.API_URL + "/add-location", {
       method: "POST",
       body: JSON.stringify({
         address: address,
