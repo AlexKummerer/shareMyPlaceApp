@@ -46,7 +46,7 @@ class PlaceFinder {
       })
       .catch((err) => {
         console.log(err);
-      }, 3000);
+      }, 3000);  
   }
 
   sharePlaceHandler() {
