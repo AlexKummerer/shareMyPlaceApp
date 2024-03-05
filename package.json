@@ -10,8 +10,8 @@
     "start": "webpack-dev-server",
     "build:prod": "webpack --config webpack.config.prod.js"
   },
-  "author": "Maximilian Schwarzmüller",
-  "license": "ISC",
+  "author": "Alexander Kummerer",
+  "license": "MIT License",
   "browserslist": "> 0.5%",
   "devDependencies": {
     "@babel/core": "^7.6.2",
