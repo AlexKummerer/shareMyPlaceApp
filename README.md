@@ -9,13 +9,13 @@ In this project you can find Share Places
 2. Install the dependencies using `npm install`.
 
 ## Usage
-
-1. Run the development server using `npm run dev`.
+1. Build fpr development `npm run build:dev`.
+1. Run the development server using `npm run start`.
 2. Open your browser and navigate to `http://localhost:8080`.
 
 ## Build
 
-To build the project for production, run `npm run build`. The optimized files will be generated in the `dist` directory.
+To build the project for production, run `npm run build:prod`. The optimized files will be generated in the `dist` directory.
 
 ## License
 
