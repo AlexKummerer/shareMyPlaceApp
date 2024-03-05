@@ -35,10 +35,13 @@ class PlaceFinder {
       })
       .then((data) => {
         console.log(data);
+        const href = location.href;
+        const url = href.replace("index.html", "");
+        console.log(url);
         const locationId = data.locId;
         this.shareBtn.disabled = false;
         const sharedLinkInputElement = document.getElementById("share-link");
-        sharedLinkInputElement.value = `${location.origin}/my-place?location=${locationId}`;
+        sharedLinkInputElement.value = `${url}/my-place?location=${locationId}`;
         console.log(data);
       })
       .catch((err) => {

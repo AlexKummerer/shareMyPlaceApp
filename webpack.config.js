@@ -6,14 +6,18 @@ const dotenv = require("dotenv").config({
 });
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const name = "[name].[contenthash].js";
+
 module.exports = {
   mode: "development",
   entry: {
     SharePlace: "./src/SharePlace.js",
     MyPlace: "./src/MyPlace.js",
   },
+ 
   output: {
-    filename: "[name].js",
+    filename: name
+    ,
     path: path.resolve(__dirname, "dist", "assets", "scripts"),
     publicPath: "assets/scripts/",
   },
@@ -46,14 +50,32 @@ module.exports = {
       "process.env": JSON.stringify(dotenv.parsed),
     }),
     new HtmlWebpackPlugin({
-      template: "dist/index.html",
+      template: "src/index.html",
       filename: "index.html",
       chunks: [],
-      
+
+      output: {
+        path: path.resolve(__dirname, "dist"),
+        publicPath: "",
+      },
       templateParameters: {
         apiKey: JSON.stringify(dotenv.parsed.API_KEY),
+        html: name,
       },
-      
+    }),
+    new HtmlWebpackPlugin({
+      template: "src/my-place/index.html",
+      filename: "myPlace.html",
+      chunks: [],
+
+      output: {
+        path: path.resolve(__dirname, "dist" ,"my-place"),
+        publicPath: "my-place",
+      },
+      templateParameters: {
+        apiKey: JSON.stringify(dotenv.parsed.API_KEY),
+        html: name,
+      },
     }),
   ],
 };
