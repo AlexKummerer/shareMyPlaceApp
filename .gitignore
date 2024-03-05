@@ -2,10 +2,12 @@
 node_modules/
 
 # Ignore build output
-dist/assets/scripts/
+dist/
 
 # Ignore environment-specific files
 .env
+
+
 
 # Ignore editor-specific files
 .vscode/

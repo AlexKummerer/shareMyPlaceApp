@@ -19,16 +19,34 @@ class PlaceFinder {
       this.map = new Map(coordinates);
     }
 
-    this.shareBtn.disabled = false;
-
-    const href = location.href;
-
-    const path = href.replace("index.html", "");
-
-    const sharedLinkInputElement = document.getElementById("share-link");
-    sharedLinkInputElement.value = `${path}my-place?address=${encodeURI(
-      address
-    )}&lat=${coordinates.lat}&lng=${coordinates.lng}`;
+    fetch(process.env.API_URL + "/add-location", {
+      method: "POST",
+      body: JSON.stringify({
+        address: address,
+        lat: coordinates.lat,
+        lng: coordinates.lng,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        const pathname = location.pathname;
+        const url = pathname.replace("index.html", "");
+        console.log(url);
+        const locationId = data.locId;
+        this.shareBtn.disabled = false;
+        const sharedLinkInputElement = document.getElementById("share-link");
+        sharedLinkInputElement.value = `${location.origin + url}my-place?location=${locationId}`;
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      }, 3000);  
   }
 
   sharePlaceHandler() {

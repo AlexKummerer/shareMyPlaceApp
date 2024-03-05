@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Share a Place</title>
-    <link rel="stylesheet" href="assets/styles/app.css" />
-    <link rel="stylesheet" href="assets/styles/share-place.css" />
-    <script>
-      ((g) => {
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><title>Share a Place</title><link rel="stylesheet" href="./assets/styles/app.css"/><link rel="stylesheet" href="./assets/styles/share-place.css"/><script>((g) => {
         var h,
           a,
           k,
@@ -42,52 +32,4 @@
         d[l]
           ? console.warn(p + " only loads once. Ignoring:", g)
           : (d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)));
-      })({ key: "", v: "weekly" });
-    </script>
-
-    <script src="assets/scripts/SharePlace.js" defer></script>
-  </head>
-  <body>
-    <template id="modal-template">
-      <div class="backdrop"></div>
-      <div class="modal"></div>
-    </template>
-    <template id="loading-modal-content">
-      <div class="modal__content centered">
-        <div class="lds-dual-ring"></div>
-      </div>
-    </template>
-
-    <header>
-      <h1>Share a Place!</h1>
-    </header>
-
-    <section id="selected-place">
-      <div id="map">
-        <p>
-          You haven't selected any place yet. Please enter an address or locate
-          yourself!
-        </p>
-      </div>
-    </section>
-
-    <section id="share-controls">
-      <input
-        id="share-link"
-        type="text"
-        readonly
-        value="Select a place to get a sharable link."
-      />
-      <button id="share-btn" disabled>Share Place</button>
-    </section>
-
-    <section id="place-data">
-      <form>
-        <label for="address">Address</label>
-        <input type="text" />
-        <button type="submit">Find Place</button>
-      </form>
-      <button id="locate-btn">Get Current Location</button>
-    </section>
-  </body>
-</html>
+      })({ key: "AIzaSyAFk7sb6UJstrg7BZk388uYCKt-EGZQHp0", v: "weekly" });</script><script src="assets/scripts/share-place.b2b380d1f0e216dab6d3.js" defer="defer"></script></head><body><template id="modal-template"><div class="backdrop"></div><div class="modal"></div></template><template id="loading-modal-content"><div class="modal__content centered"><div class="lds-dual-ring"></div></div></template><header><h1>Share a Place!</h1></header><section id="selected-place"><div id="map"><p>You haven't selected any place yet. Please enter an address or locate yourself!</p></div></section><section id="share-controls"><input id="share-link" readonly="readonly" value="Select a place to get a sharable link."/> <button id="share-btn" disabled="disabled">Share Place</button></section><section id="place-data"><form><label for="address">Address</label> <input/> <button type="submit">Find Place</button></form><button id="locate-btn">Get Current Location</button></section></body></html>
